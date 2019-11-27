@@ -158,7 +158,11 @@ namespace PlayGround
             AppendText(RTBox, InputText.Text.ToUpper(), Color.Blue, true);
 
             InputText.Text = "";
-            string ans = TennisMajors.GetResponse(words_, Tags);
+            //For Tennis
+            //string ans = TennisMajors.GetResponse(words_, Tags);
+
+            //For Football
+            string ans = FootballData.FootballComp.GetResponse(words_, Tags);
 
             if (ans.Length>0)
             {

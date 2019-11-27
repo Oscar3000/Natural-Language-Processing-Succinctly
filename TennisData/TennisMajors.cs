@@ -335,7 +335,7 @@ namespace TennisData
             {
                 List<string> Players = new List<string>();
                 TennisResults = new List<Tournament>();
-                string[] lines = System.IO.File.ReadAllLines(@"Tennis.txt");
+                string[] lines = System.IO.File.ReadAllLines(@"../../../TennisData/Tennis.txt");
                 for (var x = 0; x < lines.Length; x++)
                 {
                     string[] CurrentData = lines[x].Split('|');

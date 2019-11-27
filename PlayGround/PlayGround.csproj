@@ -150,6 +150,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FootballData\FootballData.csproj">
+      <Project>{9460ec77-bbf4-4b64-a16c-2f4a4633f6ce}</Project>
+      <Name>FootballData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NaturalLanguageProcessing\NaturalLanguageProcessing.csproj">
       <Project>{9ec8e264-533f-4c0b-8ec6-3949e5002f7f}</Project>
       <Name>NaturalLanguageProcessing</Name>

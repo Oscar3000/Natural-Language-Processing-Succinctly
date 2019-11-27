@@ -1,0 +1,37 @@
+WORLDCUP|M|1930|Uruguay|4|Argentina|2|Montevideo, Uruguay|80,000|*
+WORLDCUP|M|1934|Italy|2|Czechoslovakia|1|Rome, Italy|50,000|*
+WORLDCUP|M|1938|Italy|4|Hungary|2|Paris, France|45,000|*
+WORLDCUP|M|1950|Uruguay|2|Brazil|1|Rio de Janeiro, Brazil|199,854|*
+WORLDCUP|M|1954|West Germany|3|Hungary|2|Bern, Switzerland|60,000|*
+WORLDCUP|M|1958|Brazil|5|Sweden|2|Solna, Sweden|51,800|*
+WORLDCUP|M|1962|Brazil|3|Czechoslovakia|1|Santiago, Chile|69,000|*
+WORLDCUP|M|1966|England|4|West Germany|2|London, England|96,924|*
+WORLDCUP|M|1970|Brazil|4|Italy|1|Mexico City, Mexico|107,412|*
+WORLDCUP|M|1974|West Germany|2|Netherlands|1|Munich, West Germany|75,200|*
+WORLDCUP|M|1978|Argentina|3|Netherlands|1|Buenos Aires, Argentina|71,483|*
+WORLDCUP|M|1982|Italy|3|West Germany|1|Madrid, Spain|90,000|*
+WORLDCUP|M|1986|Argentina|3|West Germany|2|Mexico City, Mexico|114,600|*
+WORLDCUP|M|1990|West Germany|1|Argentina|0|Rome, Italy|73,603|*
+WORLDCUP|M|1994|Brazil|0|Italy|0|Pasadena, California, USA|94,194|3-2
+WORLDCUP|M|1998|France|3|Brazil|0|Saint-Denis, France|80,000|*
+WORLDCUP|M|2002|Brazil|2|Germany|0|Yokohama, Japan|69,029|*
+WORLDCUP|M|2006|Italy|1|France|1|Berlin, Germany|69,000|5-3
+WORLDCUP|M|2010|Spain|1|Netherlands|0|Johannesburg, South Africa|84,490|*
+WORLDCUP|M|2014|Germany|1|Argentina|0|Rio de Janeiro, Brazil|74,738|*
+WORLDCUP|M|2018|France|4|Croatia|2|Moscow, Russia|78,011|*
+UEFAEUROSCUP|M|1960|Soviet Union|2|Yugoslavia|1|Paris, France|78,958|*
+UEFAEUROSCUP|M|1964|Spain|2|Soviet Union|1|Madrid, Spain|79,000|*
+UEFAEUROSCUP|M|1968|Italy|3|Yugoslavia|1|Rome, Italy|68,817|*
+UEFAEUROSCUP|M|1972|West Germany|3|Soviet Union|0|Brussels, Belgium|43,066|*
+UEFAEUROSCUP|M|1976|Czechoslovakia|2|West Germany|2|Belgrade, Yugoslavia|30,790|5-3
+UEFAEUROSCUP|M|1980|West Germany|2|Belgium|1|Rome, Italy|47,860|*
+UEFAEUROSCUP|M|1984|France|2|Spain|0|Paris, France|47,368|*
+UEFAEUROSCUP|M|1988|Netherlands|2|Soviet Union|0|Munich, West Germany|62,770|*
+UEFAEUROSCUP|M|1992|Denmark|2|Germany|0|Gothenburg, Sweden|37,800|*
+UEFAEUROSCUP|M|1996|Germany|2|Czech Republic|1|London, England|73,611|*
+UEFAEUROSCUP|M|2000|France|2|Italy|1|Rotterdam, Netherlands(Belgium-Netherlands)|48,200|*
+UEFAEUROSCUP|M|2004|Greece|1|Portugal|0|Lisbon, Portugal|62,865|*
+UEFAEUROSCUP|M|2008|Spain|1|Germany|0|Vienna, Austria(Austria-Switzerland)|51,428|*
+UEFAEUROSCUP|M|2012|Spain|4|Italy|0|Kiev, Ukraine(Ukraine-Poland)|63,170|*
+UEFAEUROSCUP|M|2016|Portugal|1|France|0|Paris, France|75,868|*
+UEFAEUROSCUP|M|2020|*|*|*|*|London, England|*|*

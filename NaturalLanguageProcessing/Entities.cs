@@ -23,6 +23,9 @@ namespace NaturalLanguageProcessing
             { "MARDI GRAS"      ,"EVENT" },   // 
             { "MICROSOFT"       ,"ORG" },     // 
             { "GOOGLE"          ,"ORG" },     // 
+            { "WORLD CUP"       ,"EVENT" },   //
+            { "UEFA EUROPEAN CUP"    ,"EVENT" },   //
+            { "EUROS"    ,"EVENT" },   //
         };
 
         static public Dictionary<string, string> Patterns =   new Dictionary<string, string>
