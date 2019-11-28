@@ -96,22 +96,31 @@ namespace PlayGround
             int x = 0;
             var words_ = NaturalLanguageProcessing.NLP.ExtractWords(InputText.Text);
             List<string> Tags = new List<string>();
-            foreach (string curWord in words_)
+
+            if (APISourceCombo.SelectedIndex == GOOGLE_API)
             {
-                string GuessTag = NaturalLanguageProcessing.Tagger.TagWord(curWord);
-                Tags.Add(GuessTag);
+                Tags = NaturalLanguageProcessing.GoogleNLP.GoogleTaggedWords(InputText.Text);
             }
-            List<string> revised = NaturalLanguageProcessing.Tagger.RevisedTags(words_, Tags);
+            else
+            {
+                List<string> revised = new List<string>();
+                foreach (string curWord in words_)
+                {
+                    string GuessTag = NaturalLanguageProcessing.Tagger.TagWord(curWord);
+                    revised.Add(GuessTag);
+                }
+                Tags = NaturalLanguageProcessing.Tagger.RevisedTags(words_, revised);
+            }
 
             RTBox.Clear();
             Color RowColor = Color.Navy;
 
-            for (x = 0; x < revised.Count; x++)
+            for (x = 0; x < words_.Count; x++)
             {
                 RowColor = Color.Black;
-                if (revised[x].StartsWith("VB") ) { RowColor = Color.ForestGreen;  }
-                if (revised[x].StartsWith("JJ") ) { RowColor = Color.Navy; }
-                AppendText( RTBox,( (x + 1).ToString() + ".  [" + (revised[x] + "]")).PadRight(12) + "  " + words_[x].Trim().ToString(),RowColor,true);
+                if (Tags[x].StartsWith("VB") ) { RowColor = Color.ForestGreen;  }
+                if (Tags[x].StartsWith("JJ") ) { RowColor = Color.Navy; }
+                AppendText( RTBox,( (x + 1).ToString() + ".  [" + (Tags[x] + "]")).PadRight(12) + "  " + words_[x].Trim().ToString(),RowColor,true);
             }
         }
         /// <summary>

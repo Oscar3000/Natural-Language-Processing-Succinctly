@@ -140,7 +140,7 @@
             this.APISourceCombo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.APISourceCombo.FormattingEnabled = true;
             this.APISourceCombo.Items.AddRange(new object[] {
-            "NLP Succinctly",
+            "NLP",
             "Google",
             "Cloudmersive",
             "Microsoft "});
@@ -244,7 +244,7 @@
             this.Controls.Add(this.MenuPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "MainForm";
-            this.Text = "NLP Sandbox";
+            this.Text = "NLP Chatbot";
             this.MenuPanel.ResumeLayout(false);
             this.MenuPanel.PerformLayout();
             this.SP.Panel1.ResumeLayout(false);

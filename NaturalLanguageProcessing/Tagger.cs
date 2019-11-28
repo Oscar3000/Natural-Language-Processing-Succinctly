@@ -1,5 +1,4 @@
 ﻿//
-//  Program: Playground
 //   Author: Joseph Booth
 //  Project: Natural Language Processing Succinctly
 //  

@@ -26,6 +26,7 @@ namespace NaturalLanguageProcessing
             { "WORLD CUP"       ,"EVENT" },   //
             { "UEFA EUROPEAN CUP"    ,"EVENT" },   //
             { "EUROS"    ,"EVENT" },   //
+            { "FIFA"             ,"ORG" }, //
         };
 
         static public Dictionary<string, string> Patterns =   new Dictionary<string, string>

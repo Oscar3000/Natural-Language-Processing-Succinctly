@@ -11,10 +11,6 @@ using Cloudmersive.APIClient.NET.NLP.Api;
 using Cloudmersive.APIClient.NET.NLP.Client;
 using Cloudmersive.APIClient.NET.NLP.Model;
 
-/// <summary>
-/// Cloudmersive NLP - Part of Natural Language Succinctly (Syncfusion)
-/// </summary>
-
 namespace NaturalLanguageProcessing
 {
     /// <summary>

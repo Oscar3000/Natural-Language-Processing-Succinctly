@@ -70,17 +70,26 @@ namespace FootballData
                 TournamentYear = 9999;
             }
 
-            //Simple Questions (who won or who lost)
-            if(lastVerb == "WON")
-            {
-                ans_ = WhoWon(Tournament, TournamentYear, "M");
-               
-            }
-            if(lastVerb == "LOST")
-            {
-                ans_ = WhoLost(Tournament, TournamentYear, "M");
-            }
+            //Answer
+            ans_ = Answer(Words_,Tags_);
             return ans_.Length < 1 ? GetRandomReply() : ans_;
+        }
+
+        private static string Answer(List<string> Words_, List<string> Tags_)
+        {
+            string answer = ""; 
+            //Simple Questions (who won or who lost)
+            if (lastVerb == "WON")
+            {
+                answer = WhoWon(Tournament, TournamentYear, "M");
+
+            }
+            if (lastVerb == "LOST")
+            {
+                answer = WhoLost(Tournament, TournamentYear, "M");
+            }
+
+            return answer;
         }
 
         public static string WhoWon(string Tournament, int Year, string Gender)
@@ -155,7 +164,7 @@ namespace FootballData
             string[] PossibleReplies = {
                       "I don't know",
                       "Could you be more specific with your question?",
-                      "can you tell me the year?",
+                      //"can you tell me the year?",
                       "sorry I have no clue right now",
                       "sorry, I don't understand. could you repeat the questions with more clarity?"
                     };
