@@ -89,6 +89,28 @@ namespace FootballData
                 answer = WhoLost(Tournament, TournamentYear, "M");
             }
 
+            if (lastVerb.StartsWith("MOST"))
+            {
+                string[] keys_ = lastVerb.Split(':');
+                if (keys_.Length == 1)
+                {
+                    lastVerb = "WON";
+                }
+                else
+                {
+                    lastVerb = keys_[1];
+                }
+                if (lastVerb == "WON")
+                {
+                    answer = MostWins(Tournament, "M");
+                }
+                if (lastVerb == "LOST")
+                {
+                    answer = MostLosses(Tournament, "M");
+                }
+
+            }
+
             return answer;
         }
 
@@ -212,7 +234,7 @@ namespace FootballData
             var MostWins = ans_.FirstOrDefault();
             if (MostWins != null)
             {
-                Winningest = MostWins.Country + " has won " + Tournament + " " + MostWins.Count + " times";
+                Winningest = MostWins.Country + " has won the " + Tournament + " " + MostWins.Count + " times";
             }
             return Winningest;
         }
@@ -224,7 +246,7 @@ namespace FootballData
             var MostLosses = ans_.FirstOrDefault();
             if (MostLosses != null)
             {
-                Losses = MostLosses.Country + " has lost " + MostLosses.Count + " times";
+                Losses = MostLosses.Country + " has lost the" + MostLosses.Count + " times";
             }
 
             return Losses;

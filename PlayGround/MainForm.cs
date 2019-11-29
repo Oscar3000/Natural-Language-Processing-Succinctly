@@ -28,6 +28,7 @@ namespace PlayGround
         {
             InitializeComponent();
             APISourceCombo.SelectedIndex = 0;
+            AppendText(RTBox, "Hi! I am History Bot:), Nice to meet you. You can ask me any question about fifa world cup and uefa euros and I will try to give you the correct answer! ", Color.Green, true);
         }
 
         /// <summary>
