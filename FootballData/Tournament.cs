@@ -12,6 +12,8 @@
         public Country Winner { get; set; }
         public Country RunnerUp { get; set; }
 
+        public Country Host { get; set; }
+
         public string Venue { get; set; }
         public string Attendance { get; set; }
 

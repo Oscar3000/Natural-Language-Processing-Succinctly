@@ -28,7 +28,7 @@ namespace PlayGround
         {
             InitializeComponent();
             APISourceCombo.SelectedIndex = 0;
-            AppendText(RTBox, "Hi! I am History Bot:), Nice to meet you. You can ask me any question about fifa world cup and uefa euros and I will try to give you the correct answer! ", Color.Green, true);
+            AppendText(RTBox,"Chatbot", "Hi! I am History Bot:), Nice to meet you. You can ask me any question about fifa world cup and uefa euros and I will try to give you the correct answer! ", Color.Green, true);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace PlayGround
                 {
                     RowColor = Color.Navy;
                     if (SentenceCt % 2 == 0) { RowColor = Color.DarkGreen; }
-                    AppendText(RTBox, "[" + (SentenceCt + 1).ToString() + "] " + Sentences[x].Trim(), RowColor, true);
+                    AppendText(RTBox, null, "[" + (SentenceCt + 1).ToString() + "] " + Sentences[x].Trim(), RowColor, true);
                     SentenceCt++;
                 }
             }
@@ -85,7 +85,7 @@ namespace PlayGround
                     wordCt++;
                     RowColor = Color.Navy;
                     if (wordCt% 2 == 0) { RowColor = Color.DarkGreen; }
-                    AppendText(RTBox, "[" + (wordCt).ToString() + "] " + words_[x].Trim(), RowColor, true);
+                    AppendText(RTBox, null, "[" + (wordCt).ToString() + "] " + words_[x].Trim(), RowColor, true);
                 }
             }
         }
@@ -121,7 +121,7 @@ namespace PlayGround
                 RowColor = Color.Black;
                 if (Tags[x].StartsWith("VB") ) { RowColor = Color.ForestGreen;  }
                 if (Tags[x].StartsWith("JJ") ) { RowColor = Color.Navy; }
-                AppendText( RTBox,( (x + 1).ToString() + ".  [" + (Tags[x] + "]")).PadRight(12) + "  " + words_[x].Trim().ToString(),RowColor,true);
+                AppendText( RTBox, null, ( (x + 1).ToString() + ".  [" + (Tags[x] + "]")).PadRight(12) + "  " + words_[x].Trim().ToString(),RowColor,true);
             }
         }
         /// <summary>
@@ -145,7 +145,7 @@ namespace PlayGround
             for (int x = 0; x < revised.Count; x++)
             {
                 RowColor = Color.Black;
-                AppendText(RTBox, ((x + 1).ToString() + ".  [" + (Tags[x] + "]")).PadRight(12) + "  " + words_[x].Trim().ToString(), RowColor, true);
+                AppendText(RTBox,null, ((x + 1).ToString() + ".  [" + (Tags[x] + "]")).PadRight(12) + "  " + words_[x].Trim().ToString(), RowColor, true);
             }
         }
 
@@ -165,27 +165,25 @@ namespace PlayGround
             NaturalLanguageProcessing.Entities.UpdateNamedEntities(words_, Tags);
 
 
-            AppendText(RTBox, InputText.Text.ToUpper(), Color.Blue, true);
+            AppendText(RTBox, "User", InputText.Text.ToUpper(), Color.Blue, true);
 
             InputText.Text = "";
-            //For Tennis
-            //string ans = TennisMajors.GetResponse(words_, Tags);
-
+       
             //For Football
             string ans = FootballData.FootballComp.GetResponse(words_, Tags);
 
             if (ans.Length>0)
             {
-                AppendText(RTBox,ans, Color.Red,false);
+                AppendText(RTBox, "Chatbot",ans, Color.Red,false);
             }
-            AppendText(RTBox, " ", Color.Blue, true);
+            AppendText(RTBox, null, " ", Color.Blue, true);
 
         }
 
         /// <summary>
         /// Add color-coded lines to text box
         /// </summary>
-        private void AppendText(RichTextBox box, string text, Color color, bool AddNewLine = false)
+        private void AppendText(RichTextBox box, string user, string text, Color color, bool AddNewLine = false)
         {
             if (AddNewLine)
             {
@@ -194,7 +192,8 @@ namespace PlayGround
             box.SelectionStart = box.TextLength;
             box.SelectionLength = 0;
             box.SelectionColor = color;
-            box.AppendText(text);
+            string output = user != null ? user + ": " + text : text;
+            box.AppendText(output);
             box.SelectionColor = box.ForeColor;
         }
 

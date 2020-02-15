@@ -89,6 +89,11 @@ namespace FootballData
                 answer = WhoLost(Tournament, TournamentYear, "M");
             }
 
+            if(lastVerb == "HOSTED" || lastVerb == "PLAYED")
+            {
+                answer = WhoHosted(Tournament, TournamentYear, "M");
+            }
+
             if (lastVerb.StartsWith("MOST"))
             {
                 string[] keys_ = lastVerb.Split(':');
@@ -113,6 +118,28 @@ namespace FootballData
 
             return answer;
         }
+
+        public static string WhoHosted(string Tournament, int Year, string Gender)
+        {
+            string[] PossibleReplies = {
+                      "The Competition {0} was played in {1}",
+                      "The {0} was hosted in {1}"
+                    };
+            string ans_ = "";
+            Tournament Results_ = GetResults(Tournament, Year, Gender);
+
+            if (Results_ != null)
+            {
+                string GenderText = "men";
+                if (Gender == "F") { GenderText = "women"; }
+                int reply = rnd.Next(1, PossibleReplies.Length);
+
+                ans_ = string.Format(PossibleReplies[reply],
+                       Results_.Name,
+                       Results_.Host.FullName);
+            }
+            return ans_;
+        } 
 
         public static string WhoWon(string Tournament, int Year, string Gender)
         {
@@ -209,46 +236,67 @@ namespace FootballData
 
         static Tournament GetResults(string Tournament, int Year, string Gender)
         {
-            if (Year < 1)
+            try
             {
-                Tournament FirstOne = FootballResults.Where(x => x.Name.ToLower() == Tournament.ToLower()).OrderBy(x => x.Year).First();
-                Year = FirstOne.Year;
+                if (Year < 1)
+                {
+                    Tournament FirstOne = FootballResults.Where(x => x.Name.ToLower() == Tournament.ToLower()).OrderBy(x => x.Year).First();
+                    Year = FirstOne.Year;
+                }
+                if (Year >= 9999)
+                {
+                    Tournament LastOne = FootballResults.Where(x => x.Name.ToLower() == Tournament.ToLower()).OrderBy(x => x.Year).Last();
+                    Year = LastOne.Year;
+                }
+
+
+                Tournament Fnd = FootballResults.FirstOrDefault(x => x.Year == Year && x.Name == Tournament && x.Gender == Gender);
+                return Fnd;
             }
-            if (Year >= 9999)
+            catch(Exception ex)
             {
-                Tournament LastOne = FootballResults.Where(x => x.Name.ToLower() == Tournament.ToLower()).OrderBy(x => x.Year).Last();
-                Year = LastOne.Year;
+                return null;
             }
-
-
-            Tournament Fnd = FootballResults.FirstOrDefault(x => x.Year == Year && x.Name == Tournament && x.Gender == Gender);
-            return Fnd;
-
         }
 
         static public string MostWins(string Tournament, string Gender)
         {
             string Winningest = "";
-            var ans_ = FootballResults.Where(x => x.Name.ToLower() == Tournament.ToLower() && x.Gender == Gender).
-                          GroupBy(x => x.Winner.FullName, (key, values) => new { Country = key, Count = values.Count() }).OrderByDescending(y => y.Count);
-            var MostWins = ans_.FirstOrDefault();
-            if (MostWins != null)
+            try
             {
-                Winningest = MostWins.Country + " has won the " + Tournament + " " + MostWins.Count + " times";
+                var ans_ = FootballResults.Where(x => x.Name.ToLower() == Tournament.ToLower() && x.Gender == Gender).
+                          GroupBy(x => x.Winner.FullName, (key, values) => new { Country = key, Count = values.Count() }).OrderByDescending(y => y.Count);
+                var MostWins = ans_.FirstOrDefault();
+                if (MostWins != null)
+                {
+                    Winningest = MostWins.Country + " has won the " + Tournament + " " + MostWins.Count + " times";
+                }
             }
+            catch(Exception ex)
+            {
+                Winningest = "";
+            }
+            
             return Winningest;
         }
         static public string MostLosses(string Tournament, string Gender)
         {
             string Losses = "";
-            var ans_ = FootballResults.Where(x => x.Name.ToLower() == Tournament.ToLower() && x.Gender == Gender).
-                          GroupBy(x => x.RunnerUp.FullName, (key, values) => new { Country = key, Count = values.Count() }).OrderByDescending(y => y.Count);
-            var MostLosses = ans_.FirstOrDefault();
-            if (MostLosses != null)
+            try
             {
-                Losses = MostLosses.Country + " has lost the" + MostLosses.Count + " times";
+                var ans_ = FootballResults.Where(x => x.Name.ToLower() == Tournament.ToLower() && x.Gender == Gender).
+                          GroupBy(x => x.RunnerUp.FullName, (key, values) => new { Country = key, Count = values.Count() }).OrderByDescending(y => y.Count);
+                var MostLosses = ans_.FirstOrDefault();
+                if (MostLosses != null)
+                {
+                    Losses = MostLosses.Country + " has lost the most. " + MostLosses.Count + " times to be exact.";
+                }
             }
-
+            catch (Exception ex)
+            {
+                Losses = "";
+            }
+            
             return Losses;
         }
 
@@ -270,12 +318,14 @@ namespace FootballData
                     FinalScore = FinalScore(currentData),
                     Winner = new Country(),
                     RunnerUp = new Country(),
+                    Host = new Country(),
                     Venue = currentData[7].ToUpper().Trim(),
                     Attendance = currentData[8].ToUpper().Trim()
                 };
 
                 currentTournament.Winner.FullName = currentData[3].ToUpper().Trim();
                 currentTournament.RunnerUp.FullName = currentData[5].ToUpper().Trim();
+                currentTournament.Host.FullName = currentData[7].ToUpper().Split(',')[1].Trim();
 
                 FootballResults.Add(currentTournament);
                 Countries.Add(currentTournament.Winner.FullName);
